@@ -1,0 +1,116 @@
+/* Header.css */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+/* nav.show-menu {
+  display: flex;
+} */
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 5px;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffcc00; /* Color de texto al hacer hover */
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: blue; /* Color de la línea de subrayado */
+  transition: width 0.3s ease, right 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+  right: 0;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+.menu-icon div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    transition: max-height 0.4s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  .menu-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+  }
+
+  .show-menu {
+    max-height: 300px;
+    width: 100%;
+  }
+
+  header {
+    height: 78px;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+
+  /* Animaciones para el icono del menú hamburguesa */
+  .menu-icon.active div:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 6px);
+  }
+
+  .menu-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-8px, -7px);
+  }
+}

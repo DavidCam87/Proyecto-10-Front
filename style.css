@@ -1,0 +1,107 @@
+*{
+  list-style: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /*! colors */
+  --dci-colorNavMenu: white;
+  --dci-LGradient: linear-gradient(90deg, #13B0F5, #bbd501);
+  --dci-btnBackground: #D7FFE0;
+  --dci-btnText: #018C0F;
+  --dci-textTitle: #42446E;
+  --dci-textDark: #666666;
+  --dci-textLight: #A7A7A7;
+  --dci-textTitleCard: #000000;
+  --dci-textCard: #666666;
+
+  /*! fonts */
+  --dci-navYFooter: "DM sans" , sans-serif;
+
+  /*! sizes */
+  --dci-size-buttons: 9px;
+  --dci-size-xxs: 12px;
+  --dci-size-xs: 16px;
+  --dci-size-s: 18px;
+  --dci-size-sm: 20px;
+  --dci-size-m: 28px;
+  --dci-size-l: 32px;
+  --dci-size-xl: 42px;
+  --dci-size-xxl: 58px;
+
+  /*! margins */
+  --dci-margins-xxs: 4px;
+  --dci-margins-xs: 8px;
+  --dci-margins-s: 12px;
+  --dci-margins-m: 16px;
+  --dci-margins-l: 20px;
+  --dci-margins-xl: 24px;
+  --dci-margins-xxl: 28px;
+
+  /*! paddings */
+  --dci-padding-xxs: 4px;
+  --dci-padding-xs: 8px;
+  --dci-padding-s: 12px;
+  --dci-padding-m: 16px;
+  --dci-padding-l: 20px;
+  --dci-padding-xl: 24px;
+  --dci-padding-xxl: 28px;
+
+  /*! border */
+  --dci-border-footer: 3px solid --dci-textDark;
+  
+  /*! radius */
+
+  --dci-radius-img: 20px;
+  --dci-radius-btn: 24px;
+
+  /*! shadows */
+  --dci-shadow-card:2px 2px 100px 0px rgba(0,0,0,0.1);
+
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+body {
+  
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 90%;
+  margin: 0 auto;
+  padding-top: 0;
+  text-align: center;
+}
+
+
+
+
+/*! empiezan nuestros estilos*/
+
+main{
+  gap: 30px;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+*{
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px){
+  main{
+    display: block;
+  }
+}

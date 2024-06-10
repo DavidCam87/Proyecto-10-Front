@@ -1,0 +1,227 @@
+.divJuego {
+  width: 365px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  gap: 10px; /* Aumenté el gap para un mejor espaciado */
+  margin-top: 30px;
+  background-color: #f9f9f9; /* Fondo claro para resaltar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para mejor visual */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+}
+h3{
+  height: 65px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin: 0;
+  padding: 10px;
+}
+
+.divJuego:hover {
+  transform: translateY(-10px); /* Efecto de elevar al hacer hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumentar la sombra en hover */
+}
+
+.divJuego > img {
+  width: 250px;
+  padding: 10px;
+  border-radius: 20px; /* Cambié de 200px a 20px para mejor apariencia */
+  object-fit: cover;
+}
+
+.divJuego > div {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.divTodos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px; /* Agregué padding para mejor distribución del contenido */
+  background-color: #ececec; /* Fondo claro para el contenedor */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-controls button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  width: 200px;
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+
+
+/* Media queries para mejorar la responsividad */
+@media (max-width: 768px) {
+  .divJuego {
+      width: 90%;
+      height: auto;
+  }
+
+  .divJuego > img {
+      height: auto;
+      max-height: 300px; /* Limitar la altura de la imagen en pantallas pequeñas */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.divJuego{
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  border-radius: 20px;
+  gap: 5px;
+  border: 3px solid rgb(117, 101, 255);
+  margin-top: 30px;
+}
+
+.divJuego>img{
+  width: 100%;
+  height: 70%;
+  padding: 10px;
+  border-radius: 200px;
+  object-fit: cover;
+}
+
+.divJuego> div{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.divTodos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+.con-like {
+  --red: rgb(255, 50, 50);
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.con-like .like {
+  top: -3px;
+  left: -4px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+.con-like .checkmark {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.con-like .outline,
+.con-like .filled {
+  fill: var(--red);
+  position: absolute;
+}
+.con-like .filled {
+  animation: kfr-filled 0.5s;
+  display: none;
+}
+.con-like .celebrate {
+  position: absolute;
+  animation: kfr-celebrate 0.5s;
+  animation-fill-mode: forwards;
+  display: none;
+}
+.con-like .poly {
+  stroke: var(--red);
+  fill: var(--red);
+}
+.con-like .like:checked ~ .checkmark .filled {
+  display: block
+}
+.con-like .like:checked ~ .checkmark .celebrate {
+  display: block
+}
+@keyframes kfr-filled {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+@keyframes kfr-celebrate {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+    display: none;
+  }
+}
