@@ -2,7 +2,6 @@ import { Header } from './src/components/Header/Header.js';
 import { Home } from './src/pages/Home/Home.js'
 import './style.css'
 
-
 const Main = async () => {
   try {
     const app = document.querySelector("#app");
