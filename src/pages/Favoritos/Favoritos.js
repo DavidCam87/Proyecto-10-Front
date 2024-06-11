@@ -13,7 +13,7 @@ export const Favoritos = async () => {
   }
 
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/users/${user._id}`, {
+    const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("token")}`

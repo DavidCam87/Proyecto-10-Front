@@ -8,7 +8,7 @@ export const infoUser = async () => {
   const token = localStorage.getItem("token");
 
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${user._id}`, {
+  const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, {
     headers: {
       "Content-Type": "application/json",
       "Authorization": token

@@ -72,7 +72,7 @@ const login = async (userName, password, form) => {
     }
   };
 
-  const res = await fetch("http://localhost:3000/api/v1/users/login", opciones);
+  const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/login", opciones);
   if (res.status === 400) {
     displayError(form, "Usuario o contraseña incorrectos");
     return;
@@ -101,7 +101,7 @@ const register = async (userName, email, password, form) => {
     }
   };
 
-  const res = await fetch("http://localhost:3000/api/v1/users/register", opciones);
+  const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/register", opciones);
   if (res.status === 400) {
     displayError(form, "Error en el registro. Verifica los datos.");
     return;

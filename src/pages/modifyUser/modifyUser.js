@@ -8,7 +8,7 @@ export const modifyUser = async () => {
   const token = `Bearer ${localStorage.getItem("token")}`;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/users/${user._id}`, {
+    const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": token
@@ -22,7 +22,7 @@ export const modifyUser = async () => {
     const usuario = await res.json();
 
     if (usuario.rol === "admin") {
-      const allUsersRes = await fetch('http://localhost:3000/api/v1/users', {
+      const allUsersRes = await fetch('https://proyecto-10-back.vercel.app/api/v1/users', {
         headers: {
           "Content-Type": "application/json",
           "Authorization": token
@@ -72,7 +72,7 @@ export const modifyUser = async () => {
           if (newRol) updateData.rol = newRol;
 
           try {
-            const updateRes = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+            const updateRes = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${userId}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export const modifyUser = async () => {
 
           if (confirmDelete) {
             try {
-              const deleteRes = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+              const deleteRes = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${userId}`, {
                 method: "DELETE",
                 headers: {
                   "Content-Type": "application/json",

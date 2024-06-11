@@ -4,7 +4,7 @@ export const Home = async (page = 1) => {
   const main = document.querySelector("main");
   main.innerHTML = "";
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/juegos?page=${page}&limit=10`);
+    const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/juegos?page=${page}&limit=10`);
     const juegos = await res.json();
     pintarJuegos(juegos.juegos, main);
     paginationControls(juegos.page, juegos.totalPages)
@@ -124,7 +124,7 @@ const addFavorito = async (idJuego) => {
     body: objetoFinal
   }
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${user._id}`, opciones);
+  const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, opciones);
   if (res.ok) {
     localStorage.setItem("user", JSON.stringify(user));
     console.log(`Agregado el juego ${idJuego} a favoritos`);
@@ -150,7 +150,7 @@ const removeFavorito = async (idJuego) => {
     body: objetoFinal
   };
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${user._id}`, opciones);
+  const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, opciones);
 
   if (res.ok) {
     localStorage.setItem("user", JSON.stringify(user));

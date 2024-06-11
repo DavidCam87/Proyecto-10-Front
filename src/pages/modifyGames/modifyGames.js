@@ -12,7 +12,7 @@ export const modifyGames = async () => {
   const token = "Bearer " + localStorage.getItem("token");
 
   try {
-    const res = await fetch("http://localhost:3000/api/v1/juegos", {
+    const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/juegos", {
       headers: {
         "Content-Type": "application/json",
         "Authorization": token
@@ -55,7 +55,7 @@ export const modifyGames = async () => {
         if (newPrice) updateData.precio = newPrice;
         if (newRating) updateData.valoracion = newRating;
 
-        const updateRes = await fetch(`http://localhost:3000/api/v1/juegos/${gameId}`, {
+        const updateRes = await fetch(`https://proyecto-10-back.vercel.app/api/v1/juegos/${gameId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const modifyGames = async () => {
         const confirmDelete = confirm("¿Estás seguro de que quieres eliminar este juego?");
 
         if (confirmDelete) {
-          const deleteRes = await fetch(`http://localhost:3000/api/v1/juegos/${gameId}`, {
+          const deleteRes = await fetch(`https://proyecto-10-back.vercel.app/api/v1/juegos/${gameId}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
