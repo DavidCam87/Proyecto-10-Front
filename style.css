@@ -99,6 +99,17 @@ main{
 *{
   box-sizing: border-box;
 }
+footer{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content:space-around ;
+
+  background-color: #ececec;
+  max-width: 90%;
+  margin: 0 auto;
+  height: 50px;
+}
 
 @media (max-width: 768px){
   main{
