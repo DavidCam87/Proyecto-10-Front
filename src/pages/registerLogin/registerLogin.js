@@ -17,32 +17,41 @@ const renderForm = (formName, submitFunction) => {
 
   const formDiv = document.createElement("div");
   const form = document.createElement("form");
-  form.classList.add(`${formName}`)
+  form.classList.add(`${formName}`);
 
   const inputUN = document.createElement("input");
   inputUN.placeholder = "User Name";
+  inputUN.type = "text";
+  inputUN.required = true;
 
   const inputEmail = document.createElement("input");
   inputEmail.type = "email";
   inputEmail.placeholder = "Email";
+  inputEmail.required = true;
 
   const inputPass = document.createElement("input");
   inputPass.type = "password";
   inputPass.placeholder = "**********";
+  inputPass.required = true;
 
   const button = document.createElement("button");
   button.textContent = formName;
 
+  const loader = document.createElement("div");
+  loader.classList.add("loader");
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    loader.style.display = "inline-block";
+    button.disabled = true;
     if (formName === "Login") {
-      submitFunction(inputUN.value, inputPass.value, form);
+      submitFunction(inputUN.value, inputPass.value, form, loader, button);
     } else {
-      submitFunction(inputUN.value, inputEmail.value, inputPass.value, form);
+      submitFunction(inputUN.value, inputEmail.value, inputPass.value, form, loader, button);
     }
   });
 
-  form.append(inputUN, inputPass, button);
+  form.append(inputUN, inputPass, button, loader);
   if (formName === "Register") {
     form.insertBefore(inputEmail, inputPass);
   }
@@ -51,7 +60,9 @@ const renderForm = (formName, submitFunction) => {
   main.append(formDiv);
 };
 
-const displayError = (form, message) => {
+const displayError = (form, message, loader, button) => {
+  loader.style.display = "none";
+  button.disabled = false;
   let pError = form.querySelector(".error");
   if (!pError) {
     pError = document.createElement("p");
@@ -61,7 +72,7 @@ const displayError = (form, message) => {
   pError.textContent = message;
 };
 
-const login = async (userName, password, form) => {
+const login = async (userName, password, form, loader, button) => {
   const objetoFinal = JSON.stringify({ userName, password });
 
   const opciones = {
@@ -74,7 +85,7 @@ const login = async (userName, password, form) => {
 
   const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/login", opciones);
   if (res.status === 400) {
-    displayError(form, "Usuario o contraseña incorrectos");
+    displayError(form, "Usuario o contraseña incorrectos", loader, button);
     return;
   }
 
@@ -86,11 +97,15 @@ const login = async (userName, password, form) => {
   const respuestaFinal = await res.json();
   localStorage.setItem("token", respuestaFinal.token);
   localStorage.setItem("user", JSON.stringify(respuestaFinal.user));
+
+  loader.style.display = "none";
+  button.disabled = false;
+
   Home();
   Header();
 };
 
-const register = async (userName, email, password, form) => {
+const register = async (userName, email, password, form, loader, button) => {
   const objetoFinal = JSON.stringify({ userName, email, password });
 
   const opciones = {
@@ -103,7 +118,7 @@ const register = async (userName, email, password, form) => {
 
   const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/register", opciones);
   if (res.status === 400) {
-    displayError(form, "Error en el registro. Verifica los datos.");
+    displayError(form, "Error en el registro. Verifica los datos.", loader, button);
     return;
   }
 
@@ -116,5 +131,8 @@ const register = async (userName, email, password, form) => {
   localStorage.setItem("token", respuestaFinal.token);
   localStorage.setItem("user", JSON.stringify(respuestaFinal.user));
 
-  login(userName, password, form)
+  loader.style.display = "none";
+  button.disabled = false;
+
+  login(userName, password, form, loader, button);
 };

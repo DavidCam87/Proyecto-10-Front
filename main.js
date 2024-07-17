@@ -17,4 +17,3 @@ const Main = async () => {
   }
 }
 document.addEventListener("DOMContentLoaded", Main)
-//Main();

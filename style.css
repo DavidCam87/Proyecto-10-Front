@@ -70,25 +70,29 @@ a {
 }
 
 body {
-  
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 #app {
   max-width: 90%;
+  min-height: 90svh;
   margin: 0 auto;
   padding-top: 0;
   text-align: center;
 }
 
-
-
+*{
+  box-sizing: border-box;
+}
 
 /*! empiezan nuestros estilos*/
 
 main{
+  min-height: 85svh;
+  background-color: #ececec;
+  padding: 20px;
+  font-size: 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   gap: 30px;
   display:flex;
   flex-direction: column;
@@ -96,15 +100,14 @@ main{
   align-items: center;
   justify-content: space-between;
 }
-*{
-  box-sizing: border-box;
-}
 footer{
+  position: relative;
+  z-index: 1;
+  bottom: 0;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content:space-around ;
-
   background-color: #ececec;
   max-width: 90%;
   margin: 0 auto;
@@ -113,6 +116,7 @@ footer{
 
 @media (max-width: 768px){
   main{
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 }

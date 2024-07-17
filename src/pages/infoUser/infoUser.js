@@ -15,6 +15,7 @@ export const infoUser = async () => {
     }
   });
   const usuario = await res.json();
+  console.log(usuario);
 
   const userInfoDiv = document.createElement("div");
   userInfoDiv.classList.add("user-info");

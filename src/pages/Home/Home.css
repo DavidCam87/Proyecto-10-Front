@@ -79,6 +79,56 @@ h3{
   font-size: 1.2em;
 }
 
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ddd;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton h3,
+.skeleton img,
+.skeleton .info {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.skeleton h3 {
+  width: 80%;
+  height: 20px;
+  margin: 0;
+}
+
+.skeleton img {
+  width: 100%;
+  height: 150px;
+}
+
+.skeleton .info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skeleton .info p {
+  width: 100%;
+  height: 15px;
+  margin: 0;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #ccc;
+  }
+  50% {
+    background-color: #ddd;
+  }
+  100% {
+    background-color: #ccc;
+  }
+}
+
 
 /* Media queries para mejorar la responsividad */
 @media (max-width: 768px) {
@@ -92,67 +142,6 @@ h3{
       max-height: 300px; /* Limitar la altura de la imagen en pantallas pequeñas */
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.divJuego{
-  width: 350px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  border-radius: 20px;
-  gap: 5px;
-  border: 3px solid rgb(117, 101, 255);
-  margin-top: 30px;
-}
-
-.divJuego>img{
-  width: 100%;
-  height: 70%;
-  padding: 10px;
-  border-radius: 200px;
-  object-fit: cover;
-}
-
-.divJuego> div{
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.divTodos{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-} */
-
-
-
-
-
-
-
-
-
-
 
 .con-like {
   --red: rgb(255, 50, 50);

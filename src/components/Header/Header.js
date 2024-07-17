@@ -6,6 +6,7 @@ import { modifyUser } from "../../pages/modifyUser/modifyUser.js";
 import { Login, Register } from "../../pages/registerLogin/registerLogin.js";
 import "./Header.css";
 
+
 const routes = [
   { texto: '${https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png}' },
   { texto: "Home", funcion: Home },
@@ -17,28 +18,30 @@ const routes = [
   { texto: "Juegos", funcion: modifyGames }
 ];
 
+let currentPage = "";  // Variable global para rastrear la página actual
 const generateNavLink = (route, toggleMenu) => {
-
   if (route.texto.startsWith('${https') && route.texto.endsWith('}')) {
     const divPS = document.createElement("div");
     const img = document.createElement("img");
-    img.src = route.texto.slice(2, -1); // Extrae la URL correcta
+    img.src = route.texto.slice(2, -1); // Extraemos la URL correcta
     img.className = "logoPS";
     img.alt = "Playstation Logo";
     img.style.maxWidth = "70px";
     divPS.append(img);
-    return divPS
+    return divPS;
   } else {
     const a = document.createElement("a");
     a.href = "#";
     a.textContent = route.texto;
     a.addEventListener("click", () => {
-      route.funcion();
+      if (currentPage !== route.texto) {
+        currentPage = route.texto;
+        route.funcion();
+      }
       toggleMenu();
     });
     return a;
   }
-
 };
 
 const generateNavLinks = (routes, toggleMenu) => {
@@ -48,7 +51,7 @@ const generateNavLinks = (routes, toggleMenu) => {
       const header = document.querySelector("header");
       const divPS = generateNavLink(route, toggleMenu);
       header.append(divPS);
-      continue
+      continue;
     }
     nav.append(generateNavLink(route, toggleMenu));
   }
@@ -96,7 +99,6 @@ export const Header = () => {
       localStorage.clear();
       Header();
       Home();
-
     });
     nav.append(logoutElement);
   }
