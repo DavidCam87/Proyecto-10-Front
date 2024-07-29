@@ -1,7 +1,8 @@
 // registerLogin.js
-import { Header } from "../../components/Header/Header.js";
-import { Home } from "../Home/Home";
-import "./registerLogin.css";
+import { Header } from "../../../Header/Header.js";
+import { PetFetch } from "../../../../config/PetFetch/PetFetch.js";
+import { Home } from "../../Home.js";
+import "../../../../styles/registerLogin.css";
 
 export const Register = () => {
   renderForm("Register", register);
@@ -83,7 +84,7 @@ const login = async (userName, password, form, loader, button) => {
     }
   };
 
-  const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/login", opciones);
+  const res = await fetch(`${PetFetch}/users/login`, opciones);
   if (res.status === 400) {
     displayError(form, "Usuario o contraseña incorrectos", loader, button);
     return;
@@ -116,7 +117,7 @@ const register = async (userName, email, password, form, loader, button) => {
     }
   };
 
-  const res = await fetch("https://proyecto-10-back.vercel.app/api/v1/users/register", opciones);
+  const res = await fetch(`${PetFetch}/users/register`, opciones);
   if (res.status === 400) {
     displayError(form, "Error en el registro. Verifica los datos.", loader, button);
     return;

@@ -1,5 +1,6 @@
 import { Header } from './src/components/Header/Header.js';
-import { Home } from './src/pages/Home/Home.js'
+import { Home } from './src/components/Home/Home.js'
+import { Footer } from './src/components/Footer/Footer.js'
 import './style.css'
 
 const Main = async () => {
@@ -11,6 +12,7 @@ const Main = async () => {
     `;
     await Header();
     await Home();
+    await Footer();
 
   } catch (error) {
     console.error(error);

@@ -1,71 +1,10 @@
-import { Home } from "../../pages/Home/Home.js";
-import { Favoritos } from "../../pages/Favoritos/Favoritos.js";
-import { infoUser } from "../../pages/infoUser/infoUser.js";
-import { modifyGames } from "../../pages/modifyGames/modifyGames.js";
-import { modifyUser } from "../../pages/modifyUser/modifyUser.js";
-import { Login, Register } from "../../pages/registerLogin/registerLogin.js";
-import "./Header.css";
+import { routes } from "../../utils/routes.js";
+import { isAdmin, isLoggedIn } from "../../utils/auth.js";
+import { generateNavLinks } from "./NavLinks.js";
+import { Home } from "../Home/Home.js";
+import "../../styles/Header.css";
 
-
-const routes = [
-  { texto: '${https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png}' },
-  { texto: "Home", funcion: Home },
-  { texto: "Favoritos", funcion: Favoritos },
-  { texto: "Registro", funcion: Register },
-  { texto: "Login", funcion: Login },
-  { texto: "Informacion de Usuario", funcion: infoUser },
-  { texto: "Usuarios", funcion: modifyUser },
-  { texto: "Juegos", funcion: modifyGames }
-];
-
-let currentPage = "";  // Variable global para rastrear la página actual
-const generateNavLink = (route, toggleMenu) => {
-  if (route.texto.startsWith('${https') && route.texto.endsWith('}')) {
-    const divPS = document.createElement("div");
-    const img = document.createElement("img");
-    img.src = route.texto.slice(2, -1); // Extraemos la URL correcta
-    img.className = "logoPS";
-    img.alt = "Playstation Logo";
-    img.style.maxWidth = "70px";
-    divPS.append(img);
-    return divPS;
-  } else {
-    const a = document.createElement("a");
-    a.href = "#";
-    a.textContent = route.texto;
-    a.addEventListener("click", () => {
-      if (currentPage !== route.texto) {
-        currentPage = route.texto;
-        route.funcion();
-      }
-      toggleMenu();
-    });
-    return a;
-  }
-};
-
-const generateNavLinks = (routes, toggleMenu) => {
-  const nav = document.createElement("nav");
-  for (const route of routes) {
-    if (route.texto.startsWith('${https') && route.texto.endsWith('}')) {
-      const header = document.querySelector("header");
-      const divPS = generateNavLink(route, toggleMenu);
-      header.append(divPS);
-      continue;
-    }
-    nav.append(generateNavLink(route, toggleMenu));
-  }
-  return nav;
-};
-
-const isAdmin = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user?.rol === "admin";
-};
-
-const isLoggedIn = () => {
-  return localStorage.getItem("token") !== null;
-};
+let currentPage = { texto: "" };  // Objeto para rastrear la página actual
 
 export const Header = () => {
   const header = document.querySelector("header");
@@ -89,7 +28,7 @@ export const Header = () => {
     menuIcon.classList.toggle('active');
   };
 
-  const nav = generateNavLinks(allowedRoutes, toggleMenu);
+  const nav = generateNavLinks(allowedRoutes, toggleMenu, currentPage);
 
   if (isLoggedIn()) {
     const logoutElement = document.createElement("a");

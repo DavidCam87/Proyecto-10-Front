@@ -1,5 +1,6 @@
-import { pintarJuegos } from "../Home/Home";
-import "./Favoritos.css";
+import { pintarJuegos } from "../../PintarJuegos";
+import "../../../../styles/Favoritos.css";
+import { PetFetch } from "../../../../config/PetFetch/PetFetch";
 
 export const Favoritos = async () => {
   const main = document.querySelector("main");
@@ -13,7 +14,7 @@ export const Favoritos = async () => {
   }
 
   try {
-    const res = await fetch(`https://proyecto-10-back.vercel.app/api/v1/users/${user._id}`, {
+    const res = await fetch(`${PetFetch}/users/${user._id}`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("token")}`
