@@ -12,14 +12,19 @@ export const modifyGames = async () => {
   }
 
   main.innerHTML = "";
+
+  renderGames([], main, true);
+
   const token = "Bearer " + localStorage.getItem("token");
 
   try {
     const { juegos } = await fetchGames(token);
-    renderGames(juegos, main);
+    main.innerHTML = "";
+    renderGames(juegos, main, false);
     addModifyEventListeners(token);
     addDeleteEventListeners(token);
   } catch (error) {
     console.error("Error en la solicitud a la API", error);
+    main.innerHTML = "<p>Error al cargar los juegos. Inténtalo nuevamente más tarde.</p>";
   }
 };

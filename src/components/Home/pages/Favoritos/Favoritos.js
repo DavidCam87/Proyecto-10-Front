@@ -1,6 +1,7 @@
 import { pintarJuegos } from "../../PintarJuegos";
 import "../../../../styles/Favoritos.css";
 import { PetFetch } from "../../../../config/PetFetch/PetFetch";
+import { showSkeletons } from "../../Skeletons"
 
 export const Favoritos = async () => {
   const main = document.querySelector("main");
@@ -12,6 +13,8 @@ export const Favoritos = async () => {
     main.innerHTML = "<p>Error: Usuario no encontrado.</p>";
     return;
   }
+
+  showSkeletons(main, 10);
 
   try {
     const res = await fetch(`${PetFetch}/users/${user._id}`, {
@@ -26,6 +29,7 @@ export const Favoritos = async () => {
     }
 
     const usuario = await res.json();
+    main.innerHTML = "";
     pintarJuegos(usuario.favoritos, main);
 
   } catch (error) {

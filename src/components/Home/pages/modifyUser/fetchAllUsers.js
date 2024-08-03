@@ -11,6 +11,5 @@ export const fetchAllUsers = async (token) => {
   if (!res.ok) {
     throw new Error(`Error fetching all users: ${res.status} ${res.statusText}`);
   }
-
   return await res.json();
 };

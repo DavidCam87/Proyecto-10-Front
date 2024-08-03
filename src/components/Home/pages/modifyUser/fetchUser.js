@@ -11,6 +11,5 @@ export const fetchUser = async (userId, token) => {
   if (!res.ok) {
     throw new Error(`Error fetching user: ${res.status} ${res.statusText}`);
   }
-
   return await res.json();
 };

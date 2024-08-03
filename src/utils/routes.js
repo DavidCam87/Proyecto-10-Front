@@ -1,4 +1,3 @@
-// src/utils/routes.js
 import { Home } from "../components/Home/Home.js";
 import { Favoritos } from "../components/Home/pages/Favoritos/Favoritos.js";
 import { infoUser } from "../components/Home/pages/infoUser/infoUser.js";

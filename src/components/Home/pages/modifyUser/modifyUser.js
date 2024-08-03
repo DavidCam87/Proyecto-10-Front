@@ -8,6 +8,8 @@ export const modifyUser = async () => {
   const main = document.querySelector("main");
   main.innerHTML = "";
 
+  renderUsers([], main, true);
+
   const user = JSON.parse(localStorage.getItem("user"));
   const token = `Bearer ${localStorage.getItem("token")}`;
 
@@ -16,7 +18,8 @@ export const modifyUser = async () => {
 
     if (usuario.rol === "admin") {
       const allUsers = await fetchAllUsers(token);
-      renderUsers(allUsers, main);
+      main.innerHTML = "";
+      renderUsers(allUsers, main, false);
       addModifyEventListeners(token);
       addDeleteEventListeners(token);
     } else {
