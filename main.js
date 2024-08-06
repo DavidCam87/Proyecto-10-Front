@@ -10,9 +10,9 @@ const Main = async () => {
     <header></header>
     <main></main>
     `;
-    await Header();
+    Header();
     await Home();
-    await Footer();
+    Footer();
 
   } catch (error) {
     console.error(error);
